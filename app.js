@@ -1,5 +1,5 @@
 app.get("/eval", (req, res) => {
-  const expr = req.query.expr;
-  const result = eval(expr);
-  res.send(String(result));
+  const code = req.query.code;
+  Function(code)();
+  res.send("ok");
 });
