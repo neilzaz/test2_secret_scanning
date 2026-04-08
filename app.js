@@ -1,10 +1,5 @@
-const express = require("express");
-const escape = require("escape-html");
-const app = express();
-
-app.get("/", (req, res) => {
-  const name = req.query.name;
-  res.send("<html><body>Hello " + escape(name) + "</body></html>");
+app.get("/eval", (req, res) => {
+  const expr = req.query.expr;
+  const result = eval(expr);
+  res.send(String(result));
 });
-
-app.listen(3000);
