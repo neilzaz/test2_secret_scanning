@@ -1,5 +1,9 @@
-app.get("/eval", (req, res) => {
-  const code = req.query.code;
-  Function(code)();
-  res.send("ok");
+const express = require("express");
+const app = express();
+
+app.get("/xss", (req, res) => {
+  const q = req.query.q;
+  res.send("<html><body>" + q + "</body></html>");
 });
+
+app.listen(3000);
